@@ -6,14 +6,11 @@ from .models import Dog
 from django.http import HttpResponse
 
 def index(req):
-    dogs = Dog.objects.all()
-    dogNames = ''
-    for dog in dogs:
-        dogNames += f' {dog.name} ,'
-    return HttpResponse(f'<h1>Hello! Here are all the friends who need adopting!<h1> <p>{dogNames}</p>')
+    context = { 'doggos': Dog.objects.all() }
+    return render(req, 'adoption/index.html', context)
 
 def about(req):
-    return HttpResponse("<h1>This is an animal adomption django setup example<h1>")
+    return render(req, 'adoption/about.html')
 
 def show(req, id):
     dog = Dog.objects.get(pk=id)

@@ -1,0 +1,7 @@
+<!-- adoption/templates/adoption/index.html -->
+<h2>Here are all the friends in need of new homes!</h2>
+<ul>
+    {% for dog in doggos %}
+        <li>{{ dog.name }}</li> 
+    {% endfor %}
+</ul>
